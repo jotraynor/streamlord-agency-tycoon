@@ -1,0 +1,819 @@
+{
+  "events": [
+    {
+      "id": "cat_raid",
+      "title": "Tactical Cat Deployment",
+      "description": "{streamer}'s cat walked across the keyboard during a slow stream. Accidentally started a raid to a channel with 50,000 viewers. The cat is now more popular than {streamer}.",
+      "weight": 1,
+      "choices": [
+        {
+          "text": "Lean in. The cat gets its own emote.",
+          "effects": {
+            "followers": 800,
+            "money": -150
+          },
+          "grantsTrait": "WHOLESOME"
+        },
+        {
+          "text": "Keep the cat off-camera. Maintain brand integrity.",
+          "effects": {
+            "reputation": 5
+          }
+        },
+        {
+          "text": "Start a 'Cat Cam' subscription tier.",
+          "effects": {
+            "money": 300,
+            "followers": 200
+          }
+        }
+      ]
+    },
+    {
+      "id": "tournament_invite",
+      "title": "Tournament Invitation",
+      "description": "{streamer} got invited to a major esports tournament. The prize pool is massive, but so is the competition. Their skill will be tested.",
+      "weight": 1,
+      "genres": ["GAMING"],
+      "minStats": { "skill": 5 },
+      "choices": [
+        {
+          "text": "Accept and train hard for it.",
+          "statCheck": { "stat": "skill", "target": 8 },
+          "successEffects": { "followers": 2000, "money": 5000, "skill": 1 },
+          "failEffects": { "followers": -500, "burnout": 20 },
+          "grantsTraitOnSuccess": "COMPETITIVE"
+        },
+        {
+          "text": "Decline gracefully. Not ready yet.",
+          "effects": { "reputation": 5 }
+        },
+        {
+          "text": "Accept but don't practice. Wing it.",
+          "statCheck": { "stat": "charisma", "target": 7 },
+          "successEffects": { "followers": 800 },
+          "failEffects": { "followers": -1000, "reputation": -10 },
+          "grantsTraitOnFail": "CASUAL"
+        }
+      ]
+    },
+    {
+      "id": "vtuber_model_upgrade",
+      "title": "Model Upgrade Offer",
+      "description": "A famous rigger wants to upgrade {streamer}'s VTuber model for free in exchange for exposure. The new model looks incredible but would change their whole aesthetic.",
+      "weight": 1,
+      "genres": ["VTUBER"],
+      "choices": [
+        {
+          "text": "Accept the upgrade. Evolution is necessary.",
+          "effects": { "followers": 1500, "charisma": 1, "money": -500 }
+        },
+        {
+          "text": "Keep the current model. The fans love it.",
+          "effects": { "reputation": 10, "loyalty": 1 }
+        },
+        {
+          "text": "Commission a completely new design instead.",
+          "effects": { "money": -2000, "followers": 800, "adaptability": 1 }
+        }
+      ]
+    },
+    {
+      "id": "irl_location_exposed",
+      "title": "Location Compromised",
+      "description": "Someone figured out where {streamer} was streaming from and posted it online. Fans are showing up. This needs to be handled carefully.",
+      "weight": 1,
+      "genres": ["IRL"],
+      "choices": [
+        {
+          "text": "Address it calmly and set boundaries.",
+          "statCheck": { "stat": "charisma", "target": 7 },
+          "successEffects": { "reputation": 15, "followers": 200 },
+          "failEffects": { "dramaRisk": 2, "burnout": 15 },
+          "grantsTraitOnSuccess": "DIPLOMATIC"
+        },
+        {
+          "text": "Go dark for a week. Safety first.",
+          "effects": { "followers": -300, "burnout": -10 },
+          "grantsTrait": "PRIVATE"
+        },
+        {
+          "text": "Turn it into content. 'Fan meetup' stream.",
+          "effects": { "followers": 1000, "dramaRisk": 2 },
+          "grantsTrait": "EXTROVERT"
+        }
+      ]
+    },
+    {
+      "id": "music_cover_viral",
+      "title": "Cover Goes Viral",
+      "description": "{streamer}'s cover of a popular song is blowing up. A record label has reached out, but they want exclusive rights.",
+      "weight": 1,
+      "genres": ["MUSIC"],
+      "choices": [
+        {
+          "text": "Sign with the label. Go pro.",
+          "effects": { "money": 3000, "followers": 2500, "ambition": 1 }
+        },
+        {
+          "text": "Stay independent. Keep creative control.",
+          "effects": { "reputation": 15, "followers": 500 },
+          "grantsTrait": "PRIVATE"
+        },
+        {
+          "text": "Negotiate harder. They need us more.",
+          "statCheck": { "stat": "ambition", "target": 7 },
+          "successEffects": { "money": 8000, "followers": 2000 },
+          "failEffects": { "reputation": -10 }
+        }
+      ]
+    },
+    {
+      "id": "asmr_boundary_push",
+      "title": "Audience Requests",
+      "description": "ASMR viewers are requesting increasingly specific triggers. Some are... creative. {streamer} needs to decide where the line is.",
+      "weight": 1,
+      "genres": ["ASMR"],
+      "choices": [
+        {
+          "text": "Stick to safe, classic triggers.",
+          "effects": { "reputation": 10 },
+          "grantsTrait": "WHOLESOME"
+        },
+        {
+          "text": "Experiment with new content types.",
+          "effects": { "followers": 600, "dramaRisk": 1 }
+        },
+        {
+          "text": "Create a premium tier for special requests.",
+          "effects": { "money": 800, "followers": 200 },
+          "grantsTrait": "ADULT"
+        }
+      ]
+    },
+    {
+      "id": "react_dmca_scare",
+      "title": "Copyright Claim",
+      "description": "{streamer}'s reaction video caught a DMCA claim. The content owner is demanding the video be taken down and wants compensation.",
+      "weight": 1,
+      "genres": ["REACTION"],
+      "choices": [
+        {
+          "text": "Fight it. This is fair use.",
+          "statCheck": { "stat": "adaptability", "target": 6 },
+          "successEffects": { "followers": 500, "reputation": 10 },
+          "failEffects": { "money": -1500, "reputation": -5 }
+        },
+        {
+          "text": "Take it down and apologize.",
+          "effects": { "reputation": -5, "followers": -200 }
+        },
+        {
+          "text": "Negotiate a licensing deal.",
+          "effects": { "money": -500, "reputation": 5 }
+        }
+      ]
+    },
+    {
+      "id": "educational_misinformation",
+      "title": "Fact Check Failed",
+      "description": "{streamer} accidentally spread some misinformation in their latest video. The comments are not happy. Experts are weighing in.",
+      "weight": 1,
+      "genres": ["EDUCATIONAL"],
+      "choices": [
+        {
+          "text": "Issue a detailed correction immediately.",
+          "effects": { "reputation": 15, "skill": 1 },
+          "grantsTrait": "DIPLOMATIC"
+        },
+        {
+          "text": "Double down. The 'experts' are wrong.",
+          "effects": { "followers": -500, "dramaRisk": 3 },
+          "grantsTrait": "HOT_HEADED"
+        },
+        {
+          "text": "Quietly edit the video and hope no one notices.",
+          "effects": { "reputation": -10 }
+        }
+      ]
+    },
+    {
+      "id": "fitness_transformation",
+      "title": "Transformation Challenge",
+      "description": "A brand wants to sponsor {streamer} for a 90-day transformation challenge. Great money, but intense commitment.",
+      "weight": 1,
+      "genres": ["FITNESS"],
+      "choices": [
+        {
+          "text": "Accept the challenge. Content gold.",
+          "statCheck": { "stat": "consistency", "target": 7 },
+          "successEffects": { "money": 5000, "followers": 3000, "consistency": 1 },
+          "failEffects": { "burnout": 30, "reputation": -10 }
+        },
+        {
+          "text": "Decline. Not worth the pressure.",
+          "effects": { "reputation": 5 },
+          "grantsTrait": "CASUAL"
+        },
+        {
+          "text": "Counter-offer for a shorter challenge.",
+          "effects": { "money": 2000, "followers": 1000 }
+        }
+      ]
+    },
+    {
+      "id": "creative_art_theft",
+      "title": "Art Stolen",
+      "description": "Someone is selling prints of {streamer}'s original artwork without permission. It's been going on for months.",
+      "weight": 1,
+      "genres": ["CREATIVE"],
+      "choices": [
+        {
+          "text": "Legal action. Lawyer up.",
+          "effects": { "money": -2000, "reputation": 15 }
+        },
+        {
+          "text": "Call them out publicly.",
+          "statCheck": { "stat": "charisma", "target": 6 },
+          "successEffects": { "followers": 1000, "reputation": 10 },
+          "failEffects": { "dramaRisk": 2 },
+          "grantsTraitOnSuccess": "TRANSPARENT"
+        },
+        {
+          "text": "Let it go. Not worth the energy.",
+          "effects": { "burnout": -10 }
+        }
+      ]
+    },
+    {
+      "id": "burnout_warning",
+      "title": "Burnout Signs",
+      "description": "{streamer} has been pushing too hard. They're showing signs of exhaustion. Viewers have noticed the decline in energy.",
+      "weight": 2,
+      "minStats": { "consistency": 7 },
+      "choices": [
+        {
+          "text": "Take a week off. Mental health first.",
+          "effects": { "burnout": -30, "followers": -200 },
+          "grantsTrait": "CASUAL"
+        },
+        {
+          "text": "Push through. The grind doesn't stop.",
+          "effects": { "burnout": 20, "money": 500 },
+          "grantsTrait": "COMPETITIVE"
+        },
+        {
+          "text": "Reduce to part-time streaming temporarily.",
+          "effects": { "burnout": -15, "consistency": -1 }
+        }
+      ]
+    },
+    {
+      "id": "drama_opportunity",
+      "title": "Drama Brewing",
+      "description": "Another creator is subtweeting about {streamer}. The community is waiting to see if they'll respond. Engagement is spiking.",
+      "weight": 1,
+      "maxStats": { "dramaRisk": 8 },
+      "choices": [
+        {
+          "text": "Take the high road. Ignore it.",
+          "effects": { "reputation": 15 },
+          "grantsTrait": "DIPLOMATIC"
+        },
+        {
+          "text": "Respond with fire. Time to clap back.",
+          "statCheck": { "stat": "charisma", "target": 8 },
+          "successEffects": { "followers": 2000, "dramaRisk": 1 },
+          "failEffects": { "followers": -500, "dramaRisk": 3, "reputation": -10 },
+          "grantsTraitOnFail": "HOT_HEADED"
+        },
+        {
+          "text": "Make a meme about it. Defuse with humor.",
+          "effects": { "followers": 800, "charisma": 1 },
+          "grantsTrait": "WHOLESOME"
+        }
+      ]
+    },
+    {
+      "id": "loyal_fan_crisis",
+      "title": "Parasocial Problem",
+      "description": "A long-time supporter is becoming too attached. They're in {streamer}'s chat every stream, DMing constantly, and getting upset when not acknowledged.",
+      "weight": 1,
+      "choices": [
+        {
+          "text": "Set clear boundaries publicly.",
+          "statCheck": { "stat": "charisma", "target": 6 },
+          "successEffects": { "reputation": 10 },
+          "failEffects": { "followers": -100, "dramaRisk": 1 },
+          "grantsTraitOnSuccess": "DIPLOMATIC"
+        },
+        {
+          "text": "Quietly ban them. No explanation needed.",
+          "effects": { "reputation": -5 },
+          "grantsTrait": "PRIVATE"
+        },
+        {
+          "text": "Keep engaging. They're a big supporter.",
+          "effects": { "money": 200, "dramaRisk": 2 }
+        }
+      ]
+    },
+    {
+      "id": "collab_opportunity",
+      "title": "Collaboration Offer",
+      "description": "A creator with 10x {streamer}'s following wants to collab. Great exposure, but {streamer} will definitely be the 'smaller' one.",
+      "weight": 1,
+      "choices": [
+        {
+          "text": "Accept eagerly. Growth opportunity!",
+          "statCheck": { "stat": "charisma", "target": 6 },
+          "successEffects": { "followers": 3000, "charisma": 1 },
+          "failEffects": { "followers": 500 },
+          "grantsTraitOnSuccess": "EXTROVERT"
+        },
+        {
+          "text": "Decline. Build your own audience first.",
+          "effects": { "reputation": 5, "ambition": 1 }
+        },
+        {
+          "text": "Counter-propose a different format where you're equals.",
+          "statCheck": { "stat": "ambition", "target": 7 },
+          "successEffects": { "followers": 2000, "reputation": 10 },
+          "failEffects": { "reputation": -5 }
+        }
+      ]
+    },
+    {
+      "id": "sponsor_conflict",
+      "title": "Competing Sponsors",
+      "description": "Two competing brands both want {streamer} as an ambassador. One pays more, the other aligns better with their values.",
+      "weight": 1,
+      "minStats": { "charisma": 6 },
+      "choices": [
+        {
+          "text": "Take the money. Business is business.",
+          "effects": { "money": 3000, "reputation": -5 }
+        },
+        {
+          "text": "Go with values. Authenticity matters.",
+          "effects": { "money": 1000, "reputation": 15, "loyalty": 1 },
+          "grantsTrait": "WHOLESOME"
+        },
+        {
+          "text": "Try to negotiate with both.",
+          "statCheck": { "stat": "adaptability", "target": 7 },
+          "successEffects": { "money": 4000, "reputation": 5 },
+          "failEffects": { "reputation": -10 }
+        }
+      ]
+    },
+    {
+      "id": "gender_neutral_guys",
+      "title": "Sponsor Relations Update",
+      "description": "{streamer} said 'hey guys' on stream. Three sponsors have requested an urgent call about 'audience alignment' and 'inclusive greeting strategy.' One has already sent a 47-page brand guidelines PDF.",
+      "weight": 1,
+      "choices": [
+        {
+          "text": "Schedule the calls. Nod a lot. Say 'absolutely.'",
+          "effects": {
+            "money": 200,
+            "reputation": -5
+          }
+        },
+        {
+          "text": "Switch to 'hey gamers' and hope no one notices.",
+          "effects": {
+            "followers": -100
+          }
+        },
+        {
+          "text": "Ignore. They need us more than we need them.",
+          "effects": {
+            "reputation": 10,
+            "money": -500
+          }
+        }
+      ]
+    },
+    {
+      "id": "donation_manifesto",
+      "title": "Generous Feedback",
+      "description": "A viewer donated $5 to {streamer} with a 2,000-word message about their life philosophy, cryptocurrency predictions, and unsolicited dating advice. The TTS read the entire thing. Twice.",
+      "weight": 1,
+      "choices": [
+        {
+          "text": "Thank them sincerely. Content is content.",
+          "effects": {
+            "money": 5,
+            "followers": 50
+          }
+        },
+        {
+          "text": "Set a character limit on donations immediately.",
+          "effects": {
+            "money": -50,
+            "reputation": 5
+          }
+        },
+        {
+          "text": "Make it a recurring segment: 'Manifesto Mondays.'",
+          "effects": {
+            "followers": 300,
+            "dramaRisk": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "wrong_game",
+      "title": "Content Strategy Pivot",
+      "description": "{streamer} played the wrong game for 6 hours. Chat didn't say anything because 'the vibes were good.' Viewership was actually up 40%. Nobody knows what game it was.",
+      "weight": 1,
+      "choices": [
+        {
+          "text": "Never acknowledge it. Play wrong games forever.",
+          "effects": {
+            "followers": 600,
+            "consistency": -1
+          }
+        },
+        {
+          "text": "Ask chat what game it was. Turn it into a bit.",
+          "effects": {
+            "followers": 200,
+            "charisma": 1
+          }
+        },
+        {
+          "text": "Stick to the schedule. Consistency matters.",
+          "effects": {
+            "reputation": 5,
+            "followers": -200
+          }
+        }
+      ]
+    },
+    {
+      "id": "algorithm_bump",
+      "title": "Algorithmic Blessing",
+      "description": "The Platform pushed {streamer} to the front page for 3 hours. No one knows why. Engagement is through the roof. A platform rep emailed asking {streamer} to 'keep doing whatever that was.'",
+      "weight": 1,
+      "choices": [
+        {
+          "text": "Reply asking what 'that' was. Get no response.",
+          "effects": {
+            "followers": 1000
+          }
+        },
+        {
+          "text": "Pretend to know. Nod confidently in meetings.",
+          "effects": {
+            "followers": 1500,
+            "reputation": -5
+          }
+        },
+        {
+          "text": "Hire a consultant to figure it out. ($800)",
+          "effects": {
+            "money": -800,
+            "followers": 500,
+            "consistency": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "hot_take",
+      "title": "Discourse Participation",
+      "description": "{streamer} tweeted a mild opinion about pizza toppings. It has 2 million impressions and rising. Several gaming news sites want a statement. Someone made a YouTube video essay.",
+      "weight": 1,
+      "choices": [
+        {
+          "text": "Double down. Pizza opinions are a hill to die on.",
+          "effects": {
+            "followers": 1000,
+            "dramaRisk": 2
+          }
+        },
+        {
+          "text": "Delete tweet. Touch grass. Log off for a week.",
+          "effects": {
+            "followers": -300,
+            "reputation": 10
+          }
+        },
+        {
+          "text": "Pivot to food content. Strike while iron is hot.",
+          "effects": {
+            "followers": 400,
+            "money": 200
+          }
+        }
+      ]
+    },
+    {
+      "id": "collab_ghosted",
+      "title": "Networking Update",
+      "description": "{streamer} scheduled a collab with a bigger creator. They got ghosted. Then un-ghosted. Then ghosted again. The collab is technically 'still happening' according to their manager's manager.",
+      "weight": 1,
+      "choices": [
+        {
+          "text": "Wait patiently. Big creators are busy.",
+          "effects": {
+            "reputation": 5
+          }
+        },
+        {
+          "text": "Subtweet vaguely. 'Some people, man.'",
+          "effects": {
+            "followers": 200,
+            "dramaRisk": 2,
+            "reputation": -10
+          }
+        },
+        {
+          "text": "Move on. Collab with someone who shows up.",
+          "effects": {
+            "followers": 100,
+            "charisma": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "merch_typo",
+      "title": "Merchandise Situation",
+      "description": "500 units of {streamer}'s new merch shipped with a typo. The shirt says 'STEAM LORD' instead of 'STREAM LORD.' They're selling faster than the correct ones.",
+      "weight": 1,
+      "choices": [
+        {
+          "text": "Recall them. Brand integrity matters.",
+          "effects": {
+            "money": -600,
+            "reputation": 5
+          }
+        },
+        {
+          "text": "Limited edition. Charge double.",
+          "effects": {
+            "money": 800,
+            "followers": 100
+          }
+        },
+        {
+          "text": "Rebrand entirely. We're Steam Lords now.",
+          "effects": {
+            "followers": 300,
+            "reputation": -5
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch_raid_train",
+      "title": "Raid Train Incoming",
+      "description": "{streamer} got included in a 12-hour charity raid train. They were asleep. The raid came anyway. Chat watched them sleep for 40 minutes before anyone realized.",
+      "weight": 1,
+      "platforms": ["SWITCH"],
+      "choices": [
+        {
+          "text": "Embrace the 'sleeping stream' arc. ASMR adjacent.",
+          "effects": {
+            "followers": 600,
+            "reputation": -5
+          }
+        },
+        {
+          "text": "Apologize profusely. Re-stream the VOD wide awake.",
+          "effects": {
+            "followers": 200,
+            "reputation": 5
+          }
+        },
+        {
+          "text": "Never acknowledge it happened. Gaslight chat.",
+          "effects": {
+            "charisma": 1,
+            "followers": 100
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch_emote_drama",
+      "title": "Emote Controversy",
+      "description": "{streamer}'s new sub emote looks vaguely like a popular competitor's logo. Nobody noticed for 3 months. Now it's trending on Twitter and lawyers are 'looking into it.'",
+      "weight": 1,
+      "platforms": ["SWITCH"],
+      "choices": [
+        {
+          "text": "Replace the emote immediately. Legal is scary.",
+          "effects": {
+            "money": -200,
+            "reputation": 5
+          }
+        },
+        {
+          "text": "Claim it's parody. Fair use, baby.",
+          "effects": {
+            "followers": 400,
+            "dramaRisk": 2
+          }
+        },
+        {
+          "text": "Make it look MORE like the logo. Assert dominance.",
+          "effects": {
+            "followers": 800,
+            "money": -1000,
+            "dramaRisk": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "yetube_algorithm_death",
+      "title": "Algorithm Betrayal",
+      "description": "YeTube stopped recommending {streamer}'s videos overnight. Views dropped 80%. The official response: 'Our systems are working as intended.' They did not elaborate.",
+      "weight": 1,
+      "platforms": ["YETUBE"],
+      "choices": [
+        {
+          "text": "Pivot hard. New content, new thumbnail style, new everything.",
+          "effects": {
+            "followers": -500,
+            "consistency": 1,
+            "money": -300
+          }
+        },
+        {
+          "text": "Make a 45-minute video complaining about the algorithm.",
+          "effects": {
+            "followers": 1500,
+            "dramaRisk": 2
+          }
+        },
+        {
+          "text": "Wait it out. Algorithms are mysterious but temporary.",
+          "effects": {
+            "reputation": 5
+          }
+        }
+      ]
+    },
+    {
+      "id": "yetube_shorts_hit",
+      "title": "Shorts Lottery Winner",
+      "description": "A 30-second clip of {streamer} saying 'what' in a funny way got 5 million views on YeTube Shorts. Comments are asking who this person is. The main channel has not benefited at all.",
+      "weight": 1,
+      "platforms": ["YETUBE"],
+      "choices": [
+        {
+          "text": "Pivot to Shorts. Chase the algorithm.",
+          "effects": {
+            "followers": 2000,
+            "consistency": -1,
+            "reputation": -5
+          }
+        },
+        {
+          "text": "Ignore it. Focus on long-form content.",
+          "effects": {
+            "reputation": 10,
+            "money": 100
+          }
+        },
+        {
+          "text": "Say 'what' in every video now. It's a bit.",
+          "effects": {
+            "followers": 500,
+            "charisma": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "yetube_copyright_strike",
+      "title": "Copyright Claim Roulette",
+      "description": "{streamer}'s video got claimed for 3 seconds of silence that allegedly matches a copyrighted song. The claimant is a company that doesn't seem to exist.",
+      "weight": 1,
+      "platforms": ["YETUBE"],
+      "choices": [
+        {
+          "text": "Dispute it. You recorded that silence yourself.",
+          "effects": {
+            "money": -50,
+            "reputation": 5
+          }
+        },
+        {
+          "text": "Accept the claim. It's not worth the hassle.",
+          "effects": {
+            "money": -200,
+            "reputation": -5
+          }
+        },
+        {
+          "text": "Make a video about it. Copyright drama gets views.",
+          "effects": {
+            "followers": 800,
+            "dramaRisk": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "ohfans_boundary_test",
+      "title": "Tier List Tension",
+      "description": "Subscribers keep asking {streamer} to add content to the higher tier that wasn't part of the deal. The requests are getting more... creative. And more frequent.",
+      "weight": 1,
+      "platforms": ["OHFANS"],
+      "choices": [
+        {
+          "text": "Hard boundary. Reiterate what the tiers include.",
+          "effects": {
+            "followers": -200,
+            "reputation": 15
+          }
+        },
+        {
+          "text": "Add a new tier. Meet in the middle. More money.",
+          "effects": {
+            "money": 800,
+            "dramaRisk": 1
+          }
+        },
+        {
+          "text": "Block the most demanding ones. Quality over quantity.",
+          "effects": {
+            "followers": -100,
+            "money": 200,
+            "reputation": 5
+          }
+        }
+      ]
+    },
+    {
+      "id": "ohfans_leaked_content",
+      "title": "Content Containment Breach",
+      "description": "Some of {streamer}'s exclusive content got leaked to a free site. It's been up for a week. They found out from a viewer who 'stumbled across it.'",
+      "weight": 1,
+      "platforms": ["OHFANS"],
+      "choices": [
+        {
+          "text": "DMCA everything. Lawyer up. Full scorched earth.",
+          "effects": {
+            "money": -1200,
+            "reputation": 10,
+            "followers": -100
+          }
+        },
+        {
+          "text": "Watermark everything going forward. Learn and adapt.",
+          "effects": {
+            "money": -100,
+            "consistency": 1
+          }
+        },
+        {
+          "text": "Post about it publicly. Shame works sometimes.",
+          "effects": {
+            "followers": 300,
+            "dramaRisk": 2,
+            "money": -200
+          }
+        }
+      ]
+    },
+    {
+      "id": "ohfans_whale_appears",
+      "title": "Big Spender Alert",
+      "description": "A new subscriber tipped {streamer} $2,000 in one day. No message. No requests. Just... tips. They've been completely silent. It's unsettling.",
+      "weight": 1,
+      "platforms": ["OHFANS"],
+      "choices": [
+        {
+          "text": "Say thank you publicly. Normal business.",
+          "effects": {
+            "money": 2000,
+            "followers": 50
+          }
+        },
+        {
+          "text": "DM to check in. Make sure they're okay.",
+          "effects": {
+            "money": 2000,
+            "reputation": 5,
+            "charisma": 1
+          }
+        },
+        {
+          "text": "Refund it. Something feels wrong.",
+          "effects": {
+            "money": 0,
+            "reputation": 15
+          }
+        }
+      ]
+    }
+  ]
+}

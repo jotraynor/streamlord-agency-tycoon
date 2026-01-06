@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(npm init:*)",
+      "Bash(npx tsc:*)",
+      "mcp__plugin_playwright_playwright__browser_click",
+      "mcp__plugin_playwright_playwright__browser_navigate",
+      "mcp__plugin_playwright_playwright__browser_close",
+      "Bash(npm run dev:*)",
+      "Bash(timeout:*)",
+      "Bash(npm run build:*)",
+      "Bash(git init:*)"
+    ]
+  }
+}
