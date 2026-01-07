@@ -20,17 +20,17 @@ npm run preview  # Preview production build
 
 - **GameManager** (`src/core/GameManager.ts`): Singleton controlling all game state. All state modifications go through here to ensure auto-save and event emission. Never modify agency/streamer state directly.
 
-- **EventBus** (`src/core/EventBus.ts`): Pub/sub system for decoupled communication. Scenes subscribe to events like `STATE_CHANGED`, `DAY_ADVANCED`, `GAME_OVER`.
+- **EventBus** (`src/core/EventBus.ts`): Pub/sub system for decoupled communication. Scenes subscribe to events like `STATE_CHANGED`, `DAY_ADVANCED`, `GAME_OVER`. Supports group-based cleanup via `offGroup()` and returns `EventSubscription` for easy unsubscription.
 
-- **SaveManager** (`src/core/SaveManager.ts`): Handles localStorage persistence with auto-save.
+- **SaveManager** (`src/core/SaveManager.ts`): Handles localStorage persistence with auto-save. Uses a migration registry pattern for schema upgrades (currently v5).
 
 ### Entities
 
 - **Agency** (`src/entities/Agency.ts`): Player's agency state - money, roster, unlocked platforms, debt tracking.
 
-- **Streamer** (`src/entities/Streamer.ts`): Talent with stats (charisma, consistency, dramaRisk, skill, adaptability, loyalty, ambition), followers, platform, contract terms. Includes age and experienceYears which affect growth rate, signing cost, and retirement probability.
+- **Streamer** (`src/entities/Streamer.ts`): Talent with stats (charisma, consistency, dramaRisk, skill, adaptability, loyalty, ambition), followers, platform, contract terms. Includes age and experienceYears which affect growth rate, signing cost, and retirement probability. Burnout uses a tiered penalty curve: minimal impact 0-50, moderate 51-70 (up to -25%), severe 71-90 (up to -45%), critical 90+ (up to -60%).
 
-- **Contract** (`src/entities/Contract.ts`): Negotiation system with multi-round offers, mood tracking, counter-offers.
+- **Contract** (`src/entities/Contract.ts`): Negotiation system with multi-round offers, mood tracking, counter-offers. Negotiation state persists across page reloads.
 
 ### Living World System (`src/world/`)
 
@@ -76,6 +76,8 @@ The game features a persistent world of 500+ streamers managed by these systems:
 - All UI is DOM-based, not Phaser graphics
 - Platforms unlock via totalRevenue thresholds
 - Contracts expire and require renewal negotiation
-- Bankruptcy after 7 consecutive days in debt
+- Bankruptcy after consecutive weeks in debt (configurable via `WEEKS_IN_DEBT_BEFORE_GAME_OVER`)
 - Weekly simulation runs at end of each 7-day week (WorldSimulator.simulateWeek())
 - World state persists in save file (schema v5)
+- DOMOverlay uses component caching with hash-based dirty checking for performance
+- WorldState supports paginated queries for lazy loading (`getFreeAgentsPaginated`, `getTopStreamers`)
