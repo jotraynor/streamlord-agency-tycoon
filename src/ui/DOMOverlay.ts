@@ -76,36 +76,36 @@ class DOMOverlayClass {
     }, DOMOverlayClass.MODAL_EXIT_DURATION);
   }
 
-  // Confetti celebration effect
+  // Confetti celebration effect - runs async to not block UI
   private showConfetti(): void {
     if (!this.container) return;
 
-    const confettiContainer = document.createElement('div');
-    confettiContainer.className = 'confetti-container';
+    // Defer confetti creation to next frame so button is immediately clickable
+    requestAnimationFrame(() => {
+      const confettiContainer = document.createElement('div');
+      confettiContainer.className = 'confetti-container';
 
-    const colors = ['#f39c12', '#2ecc71', '#e74c3c', '#4a90d9', '#9b59b6', '#1abc9c'];
-    const pieceCount = 50;
+      const colors = ['#f39c12', '#2ecc71', '#e74c3c', '#4a90d9', '#9b59b6', '#1abc9c'];
+      const pieceCount = 30; // Reduced from 50
 
-    for (let i = 0; i < pieceCount; i++) {
-      const piece = document.createElement('div');
-      piece.className = 'confetti-piece';
-      piece.style.left = `${Math.random() * 100}%`;
-      piece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-      piece.style.animationDelay = `${Math.random() * 0.5}s`;
-      piece.style.animationDuration = `${2 + Math.random() * 2}s`;
+      for (let i = 0; i < pieceCount; i++) {
+        const piece = document.createElement('div');
+        piece.className = 'confetti-piece';
+        piece.style.left = `${Math.random() * 100}%`;
+        piece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        piece.style.animationDelay = `${Math.random() * 0.3}s`;
+        piece.style.animationDuration = `${1.5 + Math.random() * 1.5}s`;
 
-      // Random shapes - some circles, some squares
-      if (Math.random() > 0.5) {
-        piece.style.borderRadius = '50%';
+        if (Math.random() > 0.5) {
+          piece.style.borderRadius = '50%';
+        }
+
+        confettiContainer.appendChild(piece);
       }
 
-      confettiContainer.appendChild(piece);
-    }
-
-    this.container.appendChild(confettiContainer);
-
-    // Auto-cleanup after animation completes
-    setTimeout(() => confettiContainer.remove(), 4000);
+      this.container?.appendChild(confettiContainer);
+      setTimeout(() => confettiContainer.remove(), 3000);
+    });
   }
 
   // Main HUD - with incremental updates
