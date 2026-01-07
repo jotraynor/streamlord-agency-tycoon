@@ -1,4 +1,4 @@
-import { CONFIG, GENRES, PLATFORMS, GenreKey, PlatformKey } from '../config';
+import { CONFIG, GENRES, PLATFORMS, GenreKey, PlatformKey, AVATAR_COLORS } from '../config';
 import { WorldState, StreamerWorldData, WeeklySnapshot, NewsEvent, WorldTrend } from './WorldState';
 import { AIAgencyManager } from './AIAgency';
 
@@ -714,8 +714,6 @@ class WorldSimulatorClass {
 
     // Rookie followers (50-500)
     const followers = Math.floor(50 + Math.random() * 450);
-
-    const { AVATAR_COLORS } = require('../config');
 
     // New streamers can be any age (18-40) - streaming is for everyone!
     // Weighted: 50% 18-25, 30% 26-32, 20% 33-40

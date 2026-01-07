@@ -11,7 +11,8 @@
       "Bash(timeout:*)",
       "Bash(npm run build:*)",
       "Bash(git init:*)",
-      "Bash(gh repo create:*)"
+      "Bash(gh repo create:*)",
+      "Bash(git push:*)"
     ]
   }
 }
