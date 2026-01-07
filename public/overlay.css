@@ -636,11 +636,11 @@
 
 /* Apply entrance animations to modals */
 .modal-backdrop {
-  animation: fadeIn 0.2s ease-out forwards;
+  animation: fadeIn 0.1s ease-out forwards;
 }
 
 .modal-backdrop .modal {
-  animation: scaleIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation: scaleIn 0.15s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 /* Exit animation classes (applied via JS before removal) */
