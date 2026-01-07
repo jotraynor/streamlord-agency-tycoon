@@ -987,10 +987,10 @@ class DOMOverlayClass {
       this.closeModalWithAnimation(backdrop, onContinue);
     });
 
-    // Show confetti after a brief delay so button is immediately responsive
-    if (accepted) {
-      setTimeout(() => this.showConfetti(), 50);
-    }
+    // Confetti disabled - was causing click delays
+    // if (accepted) {
+    //   this.showConfetti();
+    // }
   }
 
   // Contract expiration notification
