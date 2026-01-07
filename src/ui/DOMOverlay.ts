@@ -980,12 +980,17 @@ class DOMOverlayClass {
     `;
 
     this.container.appendChild(backdrop);
-    if (accepted) {
-      this.showConfetti();
-    }
-    document.getElementById('continue-btn')?.addEventListener('click', () => {
+
+    // Use backdrop.querySelector instead of document.getElementById for reliability
+    const continueBtn = backdrop.querySelector('#continue-btn');
+    continueBtn?.addEventListener('click', () => {
       this.closeModalWithAnimation(backdrop, onContinue);
     });
+
+    // Show confetti after a brief delay so button is immediately responsive
+    if (accepted) {
+      setTimeout(() => this.showConfetti(), 50);
+    }
   }
 
   // Contract expiration notification
